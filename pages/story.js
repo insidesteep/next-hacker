@@ -1,6 +1,7 @@
 import Error from 'next/error'
 import Link from 'next/link'
 import Layout from '../components/Layout'
+import CommentList from '../components/CommenList'
 
 const Story = ({ story }) => {
   if (!story) {
@@ -18,6 +19,12 @@ const Story = ({ story }) => {
           <strong>{story.comments_count} comments</strong>
           <strong>{story.time_ago}</strong>
         </div>
+
+        {story.comments.length > 0 ? (
+          <CommentList comments={story.comments} />
+        ) : (
+          <div>No comments for this story</div>
+        )}
       </main>
 
       <style jsx>{`
